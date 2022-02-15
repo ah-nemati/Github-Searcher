@@ -1,0 +1,17 @@
+.list{
+display: grid;
+grid-template-columns: repeat(3,auto);
+gap: 1.5rem;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    border: .5px solid rgb(168, 166, 166);
+    align-items: center;
+    gap: .5rem;
+}
+.item img{
+    width: 100px;
+    border-radius: 50px;
+    margin-top: 10px;
+}

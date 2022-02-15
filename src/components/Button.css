@@ -1,0 +1,48 @@
+button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.dark {
+  color: white;
+  background-color: rgb(56, 53, 53);
+}
+.gray {
+  color: rgb(63, 62, 62);
+  background-color: rgb(207, 200, 200);
+}
+.lg {
+  width: 100%;
+}
+.md {
+  width: 50%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.primary {
+  background-color: #007bff;
+  color: rgb(255, 255, 255);
+}
+.success {
+  background-color: #28a745;
+  color: white;
+}
+.danger {
+  background-color: #dc3545;
+  color: white;
+}
+.x {
+  width: 15%;
+  padding: 0.5rem;
+  font-size: .8rem;
+}
+.sm {
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
+.reset_margin {
+  margin: 0;
+}

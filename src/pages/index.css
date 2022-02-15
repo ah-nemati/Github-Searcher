@@ -1,0 +1,55 @@
+.gap{
+  gap: 1rem;
+}
+.flex_col {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-content: center;
+}
+.flex_row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+input {
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+span {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.card {
+  border: 0.5px solid #ccc;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+.card_center{
+  display: flex;
+  border: 0.5px solid #ccc;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.card_item{
+  border: 0.5px solid #ccc;
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.card_item a{
+  color: #dc3545;
+}
+.card_item a:hover{
+  color: gray;
+}
+
+.text_center{
+  text-align: center;
+}
