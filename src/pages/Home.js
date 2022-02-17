@@ -9,7 +9,7 @@ import "./index.css";
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const [isClear, setisClear] = useState(false);
+  const [isClear, setisClear] = useState(null);
   const [userName, setUserName] = useState("");
   const data = useSelector((state) => state.item);
   const getData = () => {
@@ -20,16 +20,15 @@ export const Home = () => {
         data.items.map((item) => {
           dispatch(getUser(item.avatar_url, item.url, item.login, item.id));
           setisClear(true);
-          setUserName("")
+          setUserName("");
         })
       );
   };
   const clear = () => {
+    setisClear(false);
     dispatch(clearData());
   };
   return (
-    // <div className="main">
-    //   <div className="container">
     <Layout>
       <input
         type="text"

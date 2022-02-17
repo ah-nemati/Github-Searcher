@@ -6,7 +6,8 @@ import { Button } from "../components/Button";
 import { Loading } from "../components/Loading";
 import { useDispatch } from "react-redux";
 import { clearDetail } from "../Redux/Action";
-
+import t from "./images/true.png";
+import f from "./images/false.png";
 export const User = () => {
   const dispatch = useDispatch();
   const {
@@ -24,8 +25,7 @@ export const User = () => {
     company,
     hireable,
     repos_url,
-  } = useSelector((state) => state.detail ? state.detail : {});
-  console.log(bio);
+  } = useSelector((state) => (state.detail ? state.detail : {}));
   const reset = () => {
     dispatch(clearDetail());
   };
@@ -43,9 +43,14 @@ export const User = () => {
             </Link>
             <span>hireable : </span>
             {hireable ? (
-              <img src="true.png" alt="false" width={25} height={25} />
+              <img src={t} alt="true_png" width={25} height={25} />
             ) : (
-              <img src="false.png" alt="false" width={25} height={25} />
+              <img
+                src={f}
+                alt="false_png"
+                width={25}
+                height={25}
+              />
             )}
           </div>
           <div className="card">
@@ -63,7 +68,7 @@ export const User = () => {
             {bio ? (
               <div className="flex_col">
                 <span style={{ fontWeight: "bold" }}>Bio : </span>
-                <p>{bio}</p>
+                <p>{typeof bio !== Object ? bio : ""}</p>
                 <a href={html_url}>
                   <Button
                     color={"dark"}
