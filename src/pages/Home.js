@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Button } from "../components/Button";
 import { ListItem } from "../components/ListItem";
 import { getUser, clearData } from "../Redux/Action";
 import "./../index.css";
+import axios from "axios";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -13,10 +14,15 @@ export const Home = () => {
   const data = useSelector((state) => state.item);
   const getData = () => {
     dispatch(clearData());
-    fetch(`https://api.github.com/search/users?q=${userName}`)
-      .then((res) => res.json())
-      .then((data) =>
-        data.items.map((item) => {
+    axios
+      .get(`https://api.github.com/search/users?q=${userName}`, {
+        headers: {
+          Authorization: "Bearer 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",
+          "X-GitHub-Api-Version": "2022-11-28",
+        },
+      })
+      .then((res) =>
+        res.data.items.map((item) => {
           dispatch(getUser(item.avatar_url, item.url, item.login, item.id));
           setisClear(true);
           setUserName("");
@@ -27,17 +33,26 @@ export const Home = () => {
     setisClear(false);
     dispatch(clearData());
   };
+
+  useEffect(() => {
+    document
+      .querySelector("#input")
+      .addEventListener("input", (event) => setUserName(event.target.value));
+    if (userName.length > 0) {
+      getData();
+    }
+  }, [userName]);
+
   return (
     <div>
       <div className="flex_row">
-      <input
-        type="text"
-        placeholder="Search Username..."
-        required
-        value={userName}
-        className="lg"
-        onChange={(e) => setUserName(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Search Username..."
+          required
+          className="lg"
+          id="input"
+        />
       </div>
       <Button color="dark" width="lg" value="Submit" onClick={getData} />
       {isClear ? (

@@ -30,82 +30,81 @@ export const User = () => {
   };
   return (
     <>
-        {name ? (
-          <div className="flex_col gap">
-            <div className="flex_row">
-              <Link to={"/"}>
-                <Button
-                  value="Back To Search"
-                  width={"reset_margin"}
-                  onClick={reset}
-                />
-              </Link>
-              <span>hireable : </span>
-              {hireable ? (
-                <img src={t} alt="true_png" width={25} height={25} />
-              ) : (
-                <img src={f} alt="false_png" width={25} height={25} />
-              )}
-            </div>
-            <div className="card">
-              <div className="flex_col">
-                <img
-                  src={avatar_url}
-                  alt="avatar"
-                  width={150}
-                  height={150}
-                  style={{ borderRadius: 80 }}
-                />
-                <span className="text_center">{name}</span>
-                <span className="text_center">{location}</span>
-              </div>
-              {bio ? (
-                <div className="flex_col">
-                  <span style={{ fontWeight: "bold" }}>Bio : </span>
-                  <p>{typeof bio !== Object ? bio : ""}</p>
-                  <a href={html_url}>
-                    <Button
-                      color={"dark"}
-                      value="Visit Github Page"
-                      width={"sm"}
-                    />
-                  </a>
-                  <span>Login : {login}</span>
-                  <span>Company : {company}</span>
-                  <span>Website : {blog}</span>
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="card_center">
+      {name ? (
+        <div className="flex_col gap">
+          <div className="flex_row">
+            <Link to={"/"}>
               <Button
-                value={`Followers : ${followers}`}
-                width="reset_margin x danger"
+                value="Back To Search"
+                width={"reset_margin"}
+                onClick={reset}
               />
-              <Button
-                value={`Following : ${following}`}
-                width="reset_margin x"
-              />
-              <Button
-                value={`Public Repos : ${public_repos}`}
-                width="reset_margin x success"
-              />
-              <Button
-                value={`Public Gists : ${public_gists}`}
-                width="reset_margin x dark"
-              />
-            </div>
-            <h3>public repositories</h3>
-            {repos_url.map((item) => (
-              <div className="card_item" key={item.id}>
-                <a href={item.html_url}>{item.name}</a>
-              </div>
-            ))}
+            </Link>
+            <span>hireable : </span>
+            {hireable ? (
+              <img src={t} alt="true_png" width={25} height={25} />
+            ) : (
+              <img src={f} alt="false_png" width={25} height={25} />
+            )}
           </div>
-        ) : (
-          <Loading />
-        )}
+          <div className="card">
+            <div className="flex_col">
+              <img
+                src={avatar_url}
+                alt="avatar"
+                width={150}
+                height={150}
+                style={{ borderRadius: 80 }}
+              />
+              <span className="text_center">{name}</span>
+              <span className="text_center">{location}</span>
+            </div>
+            {bio ? (
+              <div className="flex_col">
+                <span style={{ fontWeight: "bold" }}>Bio : </span>
+                <p>{typeof bio !== Object ? bio : ""}</p>
+                <a href={html_url} target="_blank" rel="noreferrer">
+                  <Button
+                    color={"dark"}
+                    value="Visit Github Page"
+                    width={"sm"}
+                  />
+                </a>
+                <span>Login : {login}</span>
+                <span>Company : {company}</span>
+                <span>Website : {blog}</span>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="card_center">
+            <Button
+              value={`Followers : ${followers}`}
+              width="reset_margin x danger"
+            />
+            <Button value={`Following : ${following}`} width="reset_margin x" />
+            <Button
+              value={`Public Repos : ${public_repos}`}
+              width="reset_margin x success"
+            />
+            <Button
+              value={`Public Gists : ${public_gists}`}
+              width="reset_margin x dark"
+            />
+          </div>
+          <h3>public repositories</h3>
+          {repos_url.map((item) => (
+            <div className="card_item" key={item.id}>
+              <a href={item.html_url} target="_blank" rel="noreferrer">
+                {item.name}
+              </a>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };
