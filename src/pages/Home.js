@@ -54,7 +54,6 @@ export const Home = () => {
           id="input"
         />
       </div>
-      <Button color="dark" width="lg" value="Submit" onClick={getData} />
       {isClear ? (
         <Button color="gray" width="lg" value="Clear" onClick={clear} />
       ) : (
