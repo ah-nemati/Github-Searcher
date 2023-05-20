@@ -1,14 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Layout } from "../components/Layout";
 import { Button } from "../components/Button";
 import { Loading } from "../components/Loading";
 import { useDispatch } from "react-redux";
 import { clearDetail } from "../Redux/Action";
-import t from "./images/true.png";
-import f from "./images/false.png";
-import { Header } from "../components/Header";
+import t from "./../images/true.png";
+import f from "./../images/false.png";
 export const User = () => {
   const dispatch = useDispatch();
   const {
@@ -32,8 +30,6 @@ export const User = () => {
   };
   return (
     <>
-      <Header />
-      <Layout>
         {name ? (
           <div className="flex_col gap">
             <div className="flex_row">
@@ -100,6 +96,7 @@ export const User = () => {
                 width="reset_margin x dark"
               />
             </div>
+            <h3>public repositories</h3>
             {repos_url.map((item) => (
               <div className="card_item" key={item.id}>
                 <a href={item.html_url}>{item.name}</a>
@@ -109,7 +106,6 @@ export const User = () => {
         ) : (
           <Loading />
         )}
-      </Layout>
     </>
   );
 };
