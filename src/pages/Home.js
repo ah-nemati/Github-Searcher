@@ -12,23 +12,7 @@ export const Home = () => {
   const [isClear, setisClear] = useState(null);
   const [userName, setUserName] = useState("");
   const data = useSelector((state) => state.item);
-  const getData = () => {
-    dispatch(clearData());
-    axios
-      .get(`https://api.github.com/search/users?q=${userName}`, {
-        headers: {
-          Authorization: "Bearer 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",
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
-      })
-      .then((res) =>
-        res.data.items.map((item) => {
-          dispatch(getUser(item.avatar_url, item.url, item.login, item.id));
-          setisClear(true);
-          setUserName("");
-        })
-      );
-  };
+
   const clear = () => {
     setisClear(false);
     dispatch(clearData());
@@ -39,9 +23,24 @@ export const Home = () => {
       .querySelector("#input")
       .addEventListener("input", (event) => setUserName(event.target.value));
     if (userName.length > 0) {
-      getData();
+      dispatch(clearData());
+      axios
+        .get(`https://api.github.com/search/users?q=${userName}`, {
+          headers: {
+            Authorization: "Bearer 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",
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+        })
+        .then((res) =>
+          res.data.items.map((item) => {
+            dispatch(getUser(item.avatar_url, item.url, item.login, item.id));
+            setisClear(true);
+            setUserName("");
+          })
+        )
+        .catch((err) => alert(err.message));
     }
-  }, [userName]);
+  }, [userName, dispatch]);
 
   return (
     <div>

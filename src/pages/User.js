@@ -72,7 +72,12 @@ export const User = () => {
                 </a>
                 <span>Login : {login}</span>
                 <span>Company : {company}</span>
-                <span>Website : {blog}</span>
+                <span>
+                  Website :{" "}
+                  <a href={blog} target="_blank" rel="noreferrer">
+                    {blog}
+                  </a>
+                </span>
               </div>
             ) : (
               ""

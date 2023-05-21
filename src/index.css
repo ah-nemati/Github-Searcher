@@ -115,3 +115,6 @@ button {
 .reset_margin {
   margin: 0;
 }
+span a {
+  color: blue;
+}
